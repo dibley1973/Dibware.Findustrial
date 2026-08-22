@@ -10,7 +10,12 @@ using System.Text;
 public static class WellKnownNames
 {
     /// <summary>
-    /// Represents an unnown name.
+    /// Represents the name for an entity which is unknown.
     /// </summary>
     public const string Unknown = "Unknown";
+
+    /// <summary>
+    /// Represents the name for an entity which is empty.
+    /// </summary>
+    public const string Empty = "Empty";
 }

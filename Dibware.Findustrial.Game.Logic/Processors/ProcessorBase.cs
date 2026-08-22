@@ -8,11 +8,11 @@ using Dibware.Findustrial.Game.Logic.Entities;
 using Dibware.Findustrial.Game.Logic.Quantities;
 
 /// <summary>
-///  Represents the base class which all processors shoudl in herit from.
+///  Represents the base class which all processors should inherit from.
 /// </summary>
 internal abstract class ProcessorBase
 {
-    protected IReadOnlyCollection<MaterialQuantity> _requiredMaterials = new();
+    protected IReadOnlyCollection<MaterialQuantity> _requiredMaterials = new List<MaterialQuantity>();
 
     /// <summary>
     /// Gets or sets the name of the processor
