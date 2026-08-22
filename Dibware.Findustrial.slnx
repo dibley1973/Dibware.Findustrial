@@ -1,0 +1,7 @@
+<Solution>
+  <Folder Name="/SolutionItems/">
+    <File Path=".editorconfig" />
+    <File Path=".gitignore" />
+  </Folder>
+  <Project Path="Dibware.Findustrial.Game.Logic/Dibware.Findustrial.Game.Logic.csproj" />
+</Solution>
