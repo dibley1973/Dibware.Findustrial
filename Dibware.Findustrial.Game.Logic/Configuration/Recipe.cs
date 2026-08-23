@@ -9,7 +9,7 @@ public class Recipe
     /// <summary>
     /// Contains a list of materials and quantities.
     /// </summary>
-    public Ingredients Ingredients { get; set; } = new();
+    public IngredientList Ingredients { get; set; } = new();
 
     public string Name { get; set; }
 
