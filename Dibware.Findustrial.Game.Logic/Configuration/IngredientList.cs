@@ -5,7 +5,7 @@ using Dibware.Findustrial.Game.Logic.Entities;
 using Dibware.Findustrial.Game.Logic.Extensions.Exceptions;
 using Dibware.Findustrial.Game.Logic.Quantities;
 
-public class Ingredients
+public class IngredientList
 {
     /// <summary>
     /// The internal map of materials and quantities.
@@ -45,6 +45,12 @@ public class Ingredients
     {
         _ingredients.AddOrUpdate(material, quantity, (material, originalQuantity) => originalQuantity + quantity);
     }
+
+    /// <summary>
+    /// Gets all of the ingredients in the list.
+    /// </summary>
+    /// <returns></returns>
+    public IReadOnlyDictionary<Material, int> All() { return _ingredients.AsReadOnly(); }
 
     /// <summary>
     /// Gets a value indicating if this instance already has the specified <paramref name="material"/>.
