@@ -3,5 +3,10 @@
     <File Path=".editorconfig" />
     <File Path=".gitignore" />
   </Folder>
-  <Project Path="Dibware.Findustrial.Game.Logic/Dibware.Findustrial.Game.Logic.csproj" />
+  <Folder Name="/src/">
+    <Project Path="src/Dibware.Findustrial.Game.Logic/Dibware.Findustrial.Game.Logic.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/Dibware.Findustrial.Game.Logic.UnitTests/Dibware.Findustrial.Game.Logic.UnitTests.csproj" Id="0df6b8fc-fb70-4eae-bbcc-48c04a0906ce" />
+  </Folder>
 </Solution>
