@@ -97,13 +97,34 @@ public abstract class ValueObject
         return GetEqualityComponents()
             .Select(x => x != null ? x.GetHashCode() : 0)
             .Aggregate((x, y) => x ^ y);
-    }    
+    }
 
+    /// <summary>
+    /// Gets a value indicating if the first <see cref="ValueObject"/>
+    /// is equal to the second <see cref="ValueObject"/>.
+    /// </summary>
+    /// <param name="one">The first <see cref="ValueObject"/> to check.</param>
+    /// <param name="two">The second <see cref="ValueObject"/> to check.</param>
+    /// <returns>
+    /// Returns <see langword="true"/> if the value of the first <see cref="ValueObject"/>
+    /// is equal to the second <see cref="ValueObject"/>.
+    /// </returns>
     public static bool operator ==(ValueObject one, ValueObject two)
     {
         return EqualOperator(one, two);
     }
 
+    /// <summary>
+    /// Gets a value indicating if the first <see cref="ValueObject"/>
+    /// is not equal to the second <see cref="ValueObject"/>.
+    /// </summary>
+    /// <param name="one">The first <see cref="ValueObject"/> to check.</param>
+    /// <param name="two">The second <see cref="ValueObject"/> to check.</param>
+    /// <returns>
+    /// <returns>
+    /// Returns <see langword="true"/> if the value of the first <see cref="ValueObject"/>
+    /// is not equal to the second <see cref="ValueObject"/>.
+    /// </returns>
     public static bool operator !=(ValueObject one, ValueObject two)
     {
         return NotEqualOperator(one, two);
