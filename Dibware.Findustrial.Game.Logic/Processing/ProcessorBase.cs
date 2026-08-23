@@ -1,4 +1,4 @@
-namespace Dibware.Findustrial.Game.Logic.Processors;
+namespace Dibware.Findustrial.Game.Logic.Processing;
 
 using System;
 using System.Collections.Generic;
