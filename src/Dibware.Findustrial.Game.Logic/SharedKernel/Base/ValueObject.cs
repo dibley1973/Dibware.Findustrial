@@ -10,7 +10,7 @@ using System.Collections.Generic;
 public abstract class ValueObject
 {
     /// <summary>
-    /// Gets a value indicating of the left object equals the right object.
+    /// Gets a value indicating of the left object is equal to the right object.
     /// </summary>
     /// <param name="left">
     /// The first object to check.
@@ -19,7 +19,7 @@ public abstract class ValueObject
     /// The second object to check.
     /// </param>
     /// <returns>
-    /// Returns <see langword="true"/> if bothe objects are the same reference,
+    /// Returns <see langword="true"/> if both objects are the same reference,
     /// both objects have a <see langword="null"/> reference, or both objects
     /// values are equal.
     /// </returns>
@@ -38,37 +38,66 @@ public abstract class ValueObject
     }
 
     /// <summary>
-    /// 
+    /// Gets a value indicating of the left object is not equal to the right object.
     /// </summary>
-    /// <param name="left"></param>
-    /// <param name="right"></param>
-    /// <returns></returns>
+    /// <param name="left">
+    /// The first object to check.
+    /// </param>
+    /// <param name="right">
+    /// The second object to check.
+    /// </param>
+    /// <returns>
+    /// Returns the complete opposite of the <see cref="EqualOperator"/> member.
+    /// </returns>
     protected static bool NotEqualOperator(ValueObject left, ValueObject right)
     {
         return !(EqualOperator(left, right));
     }
 
+    /// <summary>
+    /// Override this member to provide a list of members which indciate the
+    /// equatable value of the derived class.
+    /// </summary>
+    /// <returns></returns>
     protected abstract IEnumerable<object> GetEqualityComponents();
 
-    public override bool Equals(object obj)
+    /// <summary>
+    /// Gets a value indicating if the specified <paramref name="obj"/> is equal to the current object.
+    /// </summary>
+    /// <param name="obj">
+    /// The <see langword="object"/> to check against. May be null.
+    /// </param>
+    /// <returns
+    /// Returns true if the value of the specified <see langword="object"/> is equal to
+    /// the value the current instance.
+    /// </returns>
+    public override bool Equals(object? obj)
     {
+        // return false if the other object is false, or
+        // if the types differ from each other.
         if (obj == null || obj.GetType() != GetType())
         {
             return false;
         }
 
-        var other = (ValueObject)obj;
+        // As we have already done a type comparrison of the corrent instance and
+        // the other object we know we can direct-cast the other as a ValueObject...
+        var other = (ValueObject)obj as ValueObject;
 
+        // ...and then we can use the equality components of both for comparrison.
         return this.GetEqualityComponents().SequenceEqual(other.GetEqualityComponents());
     }
 
+    /// <summary>
+    /// Gets a disitinct hash-code which is specific to the derived class.
+    /// </summary>
+    /// <returns></returns>
     public override int GetHashCode()
     {
         return GetEqualityComponents()
             .Select(x => x != null ? x.GetHashCode() : 0)
             .Aggregate((x, y) => x ^ y);
-    }
-    
+    }    
 
     public static bool operator ==(ValueObject one, ValueObject two)
     {
