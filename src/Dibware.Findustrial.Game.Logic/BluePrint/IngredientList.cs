@@ -1,4 +1,4 @@
-namespace Dibware.Findustrial.Game.Logic.Configuration;
+namespace Dibware.Findustrial.Game.Logic.BluePrint;
 
 using System.Collections.Concurrent;
 using Dibware.Findustrial.Game.Logic.Entities;
