@@ -2,6 +2,7 @@ using Dibware.Findustrial.Game.Logic.Quantities;
 
 namespace Dibware.Findustrial.Game.Logic.Extensions;
 
+using System.Runtime.CompilerServices;
 using Dibware.Findustrial.Game.Logic.Entities;
 
 /// <summary>
