@@ -1,8 +1,6 @@
 namespace Dibware.Findustrial.Game.Logic.Exceptions;
 
 using System;
-using System.Collections.Generic;
-using System.Text;
 using Dibware.Findustrial.Game.Logic.Entities;
 
 /// <summary>
