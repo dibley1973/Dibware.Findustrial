@@ -2,6 +2,7 @@ namespace Dibware.Findustrial.Game.Logic.UnitTests;
 
 using Dibware.Findustrial.Game.Logic.BluePrint;
 using Dibware.Findustrial.Game.Logic.Entities;
+using Dibware.Findustrial.Game.Logic.Exceptions;
 using Dibware.Findustrial.Game.Logic.Quantities;
 
 /// <summary>
@@ -80,6 +81,6 @@ public sealed class IngredientListUnitTests
         Action actual = () => list.Add(materialQuantity2);
 
         // Assert
-        Assert.ThrowsException<InvalidOperationException>(actual);
+        Assert.ThrowsException<SameMaterialAlreadyAddedException>(actual);
     }
 }
