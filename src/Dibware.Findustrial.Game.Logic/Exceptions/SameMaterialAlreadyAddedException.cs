@@ -32,17 +32,34 @@ public class SameMaterialAlreadyAddedException : Exception
     public SameMaterialAlreadyAddedException(string message) : base(message) { }
 
     /// <summary>
-    /// Throws a new <see cref="SameMaterialAlreadyAddedException"/> with the specified <paramref name="message"/>
+    /// Throws a new <see cref="SameMaterialAlreadyAddedException"/> with the specified <paramref name="material"/>
     /// if the specified <paramref name="condition"/> is <see langword="true"/>.
     /// </summary>
     /// <param name="condition">The condition to check.</param>
     /// <param name="material">
     /// A reference to the material which is already added.
     /// </param>
-    /// <exception cref="SameMaterialAlreadyAddedException"></exception>
+    /// <exception cref="SameMaterialAlreadyAddedException">
+    /// Thrown if the value of <paramref name="condition"/> is <see langword="true"/>.
+    /// </exception>
     public static void ThrowIfTrue(bool condition, Material material)
     {
         if (condition)
             throw new SameMaterialAlreadyAddedException(material);
+    }
+
+    /// <summary>
+    /// Throws a new <see cref="SameMaterialAlreadyAddedException"/> with the specified <paramref name="message"/>
+    /// if the specified <paramref name="condition"/> is <see langword="true"/>.
+    /// </summary>
+    /// <param name="condition">The condition to check.</param>
+    /// <param name="message">The message to include with the exception if it is thrown.</param>
+    /// <exception cref="SameMaterialAlreadyAddedException">
+    /// Thrown if the value of <paramref name="condition"/> is <see langword="true"/>.
+    /// </exception>
+    public static void ThrowIfTrue(bool condition, string message)
+    {
+        if (condition)
+            throw new SameMaterialAlreadyAddedException(message);
     }
 }
