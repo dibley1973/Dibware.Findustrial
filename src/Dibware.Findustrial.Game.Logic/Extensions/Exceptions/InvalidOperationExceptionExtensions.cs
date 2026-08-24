@@ -16,7 +16,9 @@ public static class InvalidOperationExceptionExtensions
         /// </summary>
         /// <param name="condition">The condition to check.</param>
         /// <param name="message">The message to include with the exception if it is thrown.</param>
-        /// <exception cref="InvalidOperationException"></exception>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown if the value of <paramref name="condition"/> is <see langword="true"/>.
+        /// </exception>
         public static void ThrowIfTrue(bool condition, string message)
         {
             if (condition)
@@ -29,7 +31,9 @@ public static class InvalidOperationExceptionExtensions
         /// </summary>
         /// <param name="conditionCallback">The function to call to evaluates the condition to check.</param>
         /// <param name="message">The message to include with the exception if it is thrown.</param>
-        /// <exception cref="InvalidOperationException"></exception>
+        /// <exception cref="InvalidOperationException">
+        /// Thrown if the value returned by the <paramref name="conditionCallback"/> is <see langword="true"/>.
+        /// </exception>
         public static void ThrowIfTrue(Func<bool> conditionCallback, string message)
         {
             if (conditionCallback())
