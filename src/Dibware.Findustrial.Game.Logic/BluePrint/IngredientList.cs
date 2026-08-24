@@ -2,7 +2,7 @@ namespace Dibware.Findustrial.Game.Logic.BluePrint;
 
 using System.Collections.Concurrent;
 using Dibware.Findustrial.Game.Logic.Entities;
-using Dibware.Findustrial.Game.Logic.Extensions.Exceptions;
+using Dibware.Findustrial.Game.Logic.Exceptions;
 using Dibware.Findustrial.Game.Logic.Quantities;
 
 public class IngredientList
@@ -27,7 +27,7 @@ public class IngredientList
     /// </exception>
     public void Add(MaterialQuantity materialQuantity)
     {
-        InvalidOperationException.ThrowIfTrue(
+        SameMaterialAlreadyAddedException.ThrowIfTrue(
             _ingredients.ContainsKey(materialQuantity.Material),
             $"Material '{materialQuantity.Material.Name}' already exists. Use 'HasMaterial' to check before calling this member.");
 
