@@ -53,6 +53,14 @@ public class IngredientList
     public IReadOnlyDictionary<Material, int> All() { return _ingredients.AsReadOnly(); }
 
     /// <summary>
+    /// Gets a value indicating if this instance has any ingredients.
+    /// </summary>
+    /// <returns>
+    /// Returns <see langword="true"/> if this isnatce has any ingredients.
+    /// </returns>
+    public bool Any() {  return  _ingredients.Any(); }
+
+    /// <summary>
     /// Gets a value indicating if this instance already has the specified <paramref name="material"/>.
     /// </summary>
     /// <param name="material"></param>
