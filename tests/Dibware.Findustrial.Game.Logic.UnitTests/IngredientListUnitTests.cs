@@ -90,7 +90,7 @@ public sealed class IngredientListUnitTests
         // Arrange
         var list = new IngredientList();
         var material1 = new Material("Iron");
-        var material2 = new Material("Iron");
+        var material2 = new Material("Coal");
         var materialQuantity1 = new MaterialQuantity(material1, 2);
         var materialQuantity2 = new MaterialQuantity(material2, 2);
 
@@ -101,11 +101,6 @@ public sealed class IngredientListUnitTests
 
         // Assert
         // No exception thrown
-    }
-
-    [TestMethod]
-    public void AddOrUpdate_AddingNewMaterial_IncreasesMAterialList()
-    {
     }
 
     [TestMethod]
@@ -130,6 +125,43 @@ public sealed class IngredientListUnitTests
         var materialQuantity = new MaterialQuantity(material, 2);
 
         list.Add(materialQuantity);
+
+        // Act
+        var actual = list.Any();
+
+        // Assert
+        Assert.IsTrue(actual);
+    }
+
+    [TestMethod]
+    public void Any_AfterAddOrUpdateingExistingMaterial_ReturnsTrue()
+    {
+        // Arrange
+        var list = new IngredientList();
+        var material1 = new Material("Iron");
+        var material2 = new Material("Iron");
+        var materialQuantity = new MaterialQuantity(material1, 2);
+        list.Add(materialQuantity);
+
+        list.AddOrUpdate(material2, 2);
+
+        // Act
+        var actual = list.Any();
+
+        // Assert
+        Assert.IsTrue(actual);
+    }
+    [TestMethod]
+    public void Any_AfterAddOrUpdateingNewMaterial_ReturnsTrue()
+    {
+        // Arrange
+        var list = new IngredientList();
+        var material1 = new Material("Iron");
+        var material2 = new Material("Coal");
+        var materialQuantity = new MaterialQuantity(material1, 2);
+        list.Add(materialQuantity);
+
+        list.AddOrUpdate(material2, 2);
 
         // Act
         var actual = list.Any();
