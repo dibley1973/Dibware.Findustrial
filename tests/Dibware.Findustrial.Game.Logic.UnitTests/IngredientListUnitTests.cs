@@ -83,4 +83,53 @@ public sealed class IngredientListUnitTests
         // Assert
         Assert.ThrowsException<SameMaterialAlreadyAddedException>(actual);
     }
+
+    [TestMethod]
+    public void HasMaterial_BeforeAddingAnyMAterial_ReturnsFalse()
+    {
+        // Arrange
+        var list = new IngredientList();
+        var material = new Material("Iron");
+
+        // Act
+        var actual = list.HasMaterial(material);
+
+        // Assert
+        Assert.IsFalse(actual);
+    }
+
+    [TestMethod]
+    public void HasMaterial_AfterAddinDifferentMaterial_ReturnsTrue()
+    {
+        // Arrange
+        var list = new IngredientList();
+        var material1 = new Material("Iron");
+        var material2 = new Material("Coal");
+        var materialQuantity1 = new MaterialQuantity(material1, 2);
+        var materialQuantity2 = new MaterialQuantity(material2, 2);
+
+        list.Add(materialQuantity1);
+
+        // Act
+        var actual = list.HasMaterial(material2);
+
+        // Assert
+        Assert.IsFalse(actual);
+    }
+
+    [TestMethod]
+    public void HasMaterial_AfterAddingCheckedMaterial_ReturnsTrue()
+    {
+        // Arrange
+        var list = new IngredientList();
+        var material = new Material("Iron");
+        var materialQuantity = new MaterialQuantity(material, 1);
+        list.Add(materialQuantity);
+
+        // Act
+        var actual = list.HasMaterial(material);
+
+        // Assert
+        Assert.IsTrue(actual);
+    }
 }
